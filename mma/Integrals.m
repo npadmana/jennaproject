@@ -8,4 +8,5 @@ fgps[k_,spec_] := Module[{r,\[Mu]},Suave[(r/14*spec[k*r]*spec[k*\[Lambda][r,\[Mu
 fgps2[k_,spec_] := Module[{r,\[Mu]},Suave[(1/(14*r)*spec[k/r]*spec[k*\[Lambda][1/r,\[Mu]]^(1/2)]*f[1/r,\[Mu]]),{r,0,1},{\[Mu],-1,1},Verbose->0][[1,1]]]
 
 
-fgps3[k_,spec_]:= Module[{r,\[Mu]},Suave[(r^2*spec[k*r]*spec[k*\[Lambda][r,\[Mu]]^(1/2)]*g[r,\[Mu]]),{r,0,1},{\[Mu],-1,1},Verbose->0][[1,1]]];
+fgps3[k_,spec_,trn_]:= Module[{r,\[Mu]},Suave[(r^2*spec[k*r]*spec[k*\[Lambda][r,\[Mu]]^(1/2)]*g[r,\[Mu]]*trn[k*r]*trn[k*\[Lambda][r,\[Mu]]^(1/2)]),{r,0,1},{\[Mu],-1,1},Verbose->0][[1,1]]];
+fgps4[k_,spec_,trn_]:= Module[{r,\[Mu]},Suave[(1/r^2*spec[k/r]*spec[k*\[Lambda][1/r,\[Mu]]^(1/2)]*g[1/r,\[Mu]]*trn[k/r]*trn[k*\[Lambda][1/r,\[Mu]]^(1/2)]),{r,0,1},{\[Mu],-1,1},Verbose->0][[1,1]]];
