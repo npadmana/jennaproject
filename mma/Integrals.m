@@ -22,10 +22,16 @@ autoru[k_,spec_]:=
 						+1/r^4*spec[k/r]*spec[k*\[Lambda][1/r,\[Mu]]]*(2*br^2*g[1/r,\[Mu],k]^2),
 							{r,0,1},{\[Mu],-1,1},Verbose->0][[1,1]]];
 autonl[k_,spec_]:=
-	Module[{r,\[Mu]},Suave[r^2*spec[k*r]*spec[k*\[Lambda][r,\[Mu]]]*(b1^2/2+2*b1*b2*f[r,\[Mu]])
-						+1/r^4*spec[k/r]*spec[k*\[Lambda][1/r,\[Mu]]](b1^2/2+2*b1*b2*f[1/r,\[Mu]]),{r,0,1},{\[Mu],-1,1},Verbose->0][[1,1]]];
+	Module[{r,\[Mu]},Suave[r^2*spec[k*r]*spec[k*\[Lambda][r,\[Mu]]]*(b2^2/2+2*b1*b2*f[r,\[Mu]])
+						+1/r^4*spec[k/r]*spec[k*\[Lambda][1/r,\[Mu]]](b2^2/2+2*b1*b2*f[1/r,\[Mu]]),
+							{r,0,1},{\[Mu],-1,1},Verbose->0][[1,1]]];
 cross[k_,spec_]:=
-	Module[{r,\[Mu]},Suave[r^2*spec[k*r]*spec[k*\[Lambda][r,\[Mu]]]*(b2^2/2+4*b1*br*f[r,\[Mu]]*g[r,\[Mu]]+2*b2*br*g[r,\[Mu]]+4*b1*br/r^2*f[1/r,\[Mu]]*g[1/r,\[Mu]]-2*b2*br*g[1/r,\[Mu]]),{r,0,1},{\[Mu],-1,1},Verbose->0][[1,1]]];
+	Module[{r,\[Mu]},Suave[r^2*spec[k*r]*spec[k*\[Lambda][r,\[Mu]]]*(4*b1*br*f[r,\[Mu]]*g[r,\[Mu]]+2*b2*br*g[r,\[Mu]])
+						+1/r^4*spec[k/r]*spec[k*\[Lambda][1/r,\[Mu]]](4*b1*br*f[1/r,\[Mu]]*g[1/r,\[Mu]]+2*b2*br*g[1/r,\[Mu]]),
+							{r,0,1},{\[Mu],-1,1},Verbose->0][[1,1]]];
+
+
+
 
 
 
