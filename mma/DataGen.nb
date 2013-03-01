@@ -1,0 +1,552 @@
+(* Content-type: application/mathematica *)
+
+(*** Wolfram Notebook File ***)
+(* http://www.wolfram.com/nb *)
+
+(* CreatedBy='Mathematica 7.0' *)
+
+(*CacheID: 234*)
+(* Internal cache information:
+NotebookFileLineBreakTest
+NotebookFileLineBreakTest
+NotebookDataPosition[       145,          7]
+NotebookDataLength[     20597,        543]
+NotebookOptionsPosition[     18814,        486]
+NotebookOutlinePosition[     19154,        501]
+CellTagsIndexPosition[     19111,        498]
+WindowFrame->Normal*)
+
+(* Beginning of Notebook Content *)
+Notebook[{
+
+Cell[CellGroupData[{
+Cell[BoxData[
+ RowBox[{"SetDirectory", "[", 
+  RowBox[{"NotebookDirectory", "[", "]"}], "]"}]], "Input"],
+
+Cell[BoxData["\<\"/Users/Jenna/jennaproject/mma\"\>"], "Output",
+ CellChangeTimes->{3.571091772109839*^9}]
+}, Open  ]],
+
+Cell[CellGroupData[{
+
+Cell[BoxData[
+ RowBox[{"Needs", "[", "\"\<Integrals`\>\"", "]"}]], "Input"],
+
+Cell[BoxData[
+ RowBox[{
+  RowBox[{"Needs", "::", "\<\"nocont\"\>"}], 
+  RowBox[{
+  ":", " "}], "\<\"\\!\\(\\*StyleBox[\\\"\\\\\\\"Context \\\\\\\"\\\", \\\"MT\
+\\\"]\\)\[NoBreak]\\!\\(\\*StyleBox[\\!\\(\\\"Integrals`\\\"\\), \
+\\\"MT\\\"]\\)\[NoBreak]\\!\\(\\*StyleBox[\\\"\\\\\\\" was not created when \
+Needs was evaluated.\\\\\\\"\\\", \\\"MT\\\"]\\) \\!\\(\\*ButtonBox[\\\"\
+\[RightSkeleton]\\\", ButtonStyle->\\\"Link\\\", ButtonFrame->None, \
+ButtonData:>\\\"paclet:ref/message/Needs/nocont\\\", ButtonNote -> \
+\\\"Needs::nocont\\\"]\\)\"\>"}]], "Message", "MSG",
+ CellChangeTimes->{3.5710918029623537`*^9}]
+}, Open  ]],
+
+Cell[BoxData[{
+ RowBox[{
+  RowBox[{"mp0", "=", 
+   RowBox[{"Import", "[", 
+    RowBox[{"\"\<../data/test_matterPower_0.dat\>\"", ",", "\"\<Table\>\""}], 
+    "]"}]}], ";"}], "\[IndentingNewLine]", 
+ RowBox[{
+  RowBox[{"trlist", "=", 
+   RowBox[{"Import", "[", 
+    RowBox[{"\"\<../data/Tru_Tm.txt\>\"", ",", "\"\<Table\>\""}], "]"}]}], 
+  ";"}]}], "Input"],
+
+Cell[BoxData[{
+ RowBox[{
+  RowBox[{"Pm", "=", 
+   RowBox[{"Interpolation", "[", "mp0", "]"}]}], ";"}], "\[IndentingNewLine]", 
+ RowBox[{
+  RowBox[{"tr", "=", 
+   RowBox[{"Interpolation", "[", "trlist", "]"}]}], ";"}]}], "Input"],
+
+Cell[BoxData[{
+ RowBox[{
+  RowBox[{
+   RowBox[{"Pmgood", "[", "k_", "]"}], ":=", 
+   RowBox[{"If", "[", 
+    RowBox[{
+     RowBox[{
+      RowBox[{"k", "<", "0.0001"}], "||", 
+      RowBox[{"k", ">", "1.993"}]}], ",", "0", ",", 
+     RowBox[{"Pm", "[", "k", "]"}]}], "]"}]}], ";"}], "\[IndentingNewLine]", 
+ RowBox[{
+  RowBox[{
+   RowBox[{"Trgood", "[", "k_", "]"}], ":=", 
+   RowBox[{"If", "[", 
+    RowBox[{
+     RowBox[{
+      RowBox[{"k", "<", "1.9755223192`*^-7"}], "||", 
+      RowBox[{"k", ">", "12.477498542`"}]}], ",", "0", ",", 
+     RowBox[{"tr", "[", "k", "]"}]}], "]"}]}], ";"}]}], "Input"],
+
+Cell[CellGroupData[{
+
+Cell[BoxData[
+ RowBox[{
+  RowBox[{"kvals", "=", 
+   RowBox[{"Range", "[", 
+    RowBox[{"0.001", ",", "1", ",", "0.001"}], "]"}]}], ";"}]], "Input",
+ CellChangeTimes->{{3.571091865689435*^9, 3.5710919555519238`*^9}}],
+
+Cell[BoxData[
+ RowBox[{"{", "1000", "}"}]], "Output",
+ CellChangeTimes->{{3.571091918339813*^9, 3.571091947672847*^9}}]
+}, Open  ]],
+
+Cell[CellGroupData[{
+
+Cell[BoxData[{
+ RowBox[{
+  RowBox[{"t1", "=", 
+   RowBox[{
+    RowBox[{
+     RowBox[{
+      RowBox[{
+       RowBox[{"#", "^", "3"}], "/", 
+       RowBox[{"(", 
+        RowBox[{"2", "*", 
+         RowBox[{"Pi", "^", "2"}]}], ")"}]}], "*", 
+      RowBox[{"term1", "[", 
+       RowBox[{"#", ",", "Pmgood"}], "]"}]}], "&"}], "/@", 
+    RowBox[{"Take", "[", 
+     RowBox[{"kvals", ",", 
+      RowBox[{"{", 
+       RowBox[{"1", ",", "1000", ",", "2"}], "}"}]}], "]"}]}]}], 
+  ";"}], "\[IndentingNewLine]", 
+ RowBox[{
+  RowBox[{"t2", "=", 
+   RowBox[{
+    RowBox[{
+     RowBox[{
+      RowBox[{
+       RowBox[{"#", "^", "3"}], "/", 
+       RowBox[{"(", 
+        RowBox[{"2", "*", 
+         RowBox[{"Pi", "^", "2"}]}], ")"}]}], "*", 
+      RowBox[{"term2", "[", 
+       RowBox[{"#", ",", "Pmgood"}], "]"}]}], "&"}], "/@", 
+    RowBox[{"Take", "[", 
+     RowBox[{"kvals", ",", 
+      RowBox[{"{", 
+       RowBox[{"1", ",", "1000", ",", "2"}], "}"}]}], "]"}]}]}], 
+  ";"}], "\[IndentingNewLine]", 
+ RowBox[{
+  RowBox[{"t3", "=", 
+   RowBox[{
+    RowBox[{
+     RowBox[{
+      RowBox[{
+       RowBox[{"#", "^", "3"}], "/", 
+       RowBox[{"(", 
+        RowBox[{"2", "*", 
+         RowBox[{"Pi", "^", "2"}]}], ")"}]}], "*", 
+      RowBox[{"term3", "[", 
+       RowBox[{"#", ",", "Pmgood", ",", "Trgood"}], "]"}]}], "&"}], "/@", 
+    RowBox[{"Take", "[", 
+     RowBox[{"kvals", ",", 
+      RowBox[{"{", 
+       RowBox[{"1", ",", "1000", ",", "2"}], "}"}]}], "]"}]}]}], 
+  ";"}], "\[IndentingNewLine]", 
+ RowBox[{
+  RowBox[{"t4", "=", 
+   RowBox[{
+    RowBox[{
+     RowBox[{
+      RowBox[{
+       RowBox[{"#", "^", "3"}], "/", 
+       RowBox[{"(", 
+        RowBox[{"2", "*", 
+         RowBox[{"Pi", "^", "2"}]}], ")"}]}], "*", 
+      RowBox[{"term4", "[", 
+       RowBox[{"#", ",", "Pmgood", ",", "Trgood"}], "]"}]}], "&"}], "/@", 
+    RowBox[{"Take", "[", 
+     RowBox[{"kvals", ",", 
+      RowBox[{"{", 
+       RowBox[{"1", ",", "1000", ",", "2"}], "}"}]}], "]"}]}]}], 
+  ";"}], "\[IndentingNewLine]", 
+ RowBox[{
+  RowBox[{"t5", "=", 
+   RowBox[{
+    RowBox[{
+     RowBox[{
+      RowBox[{
+       RowBox[{"#", "^", "3"}], "/", 
+       RowBox[{"(", 
+        RowBox[{"2", "*", 
+         RowBox[{"Pi", "^", "2"}]}], ")"}]}], "*", 
+      RowBox[{"term5", "[", 
+       RowBox[{"#", ",", "Pmgood", ",", "Trgood"}], "]"}]}], "&"}], "/@", 
+    RowBox[{"Take", "[", 
+     RowBox[{"kvals", ",", 
+      RowBox[{"{", 
+       RowBox[{"1", ",", "1000", ",", "2"}], "}"}]}], "]"}]}]}], 
+  ";"}]}], "Input",
+ CellChangeTimes->{{3.571091986106007*^9, 3.571092085553163*^9}, {
+  3.571092690935973*^9, 3.571092699353915*^9}}],
+
+Cell[BoxData[
+ RowBox[{
+  RowBox[{"Suave", "::", "\<\"success\"\>"}], 
+  RowBox[{
+  ":", " "}], "\<\"\\!\\(\\*StyleBox[\\\"\\\\\\\"Needed \\\\\\\"\\\", \
+\\\"MT\\\"]\\)\[NoBreak]\\!\\(\\*StyleBox[\\!\\(40000\\), \\\"MT\\\"]\\)\
+\[NoBreak]\\!\\(\\*StyleBox[\\\"\\\\\\\" function evaluations on \
+\\\\\\\"\\\", \\\"MT\\\"]\\)\[NoBreak]\\!\\(\\*StyleBox[\\!\\(40\\), \\\"MT\\\
+\"]\\)\[NoBreak]\\!\\(\\*StyleBox[\\\"\\\\\\\" subregions.\\\\\\\"\\\", \
+\\\"MT\\\"]\\)\"\>"}]], "Message", "MSG",
+ CellChangeTimes->{3.571092689343852*^9, 3.57112826668401*^9}],
+
+Cell[BoxData[
+ RowBox[{
+  RowBox[{"Suave", "::", "\<\"success\"\>"}], 
+  RowBox[{
+  ":", " "}], "\<\"\\!\\(\\*StyleBox[\\\"\\\\\\\"Needed \\\\\\\"\\\", \
+\\\"MT\\\"]\\)\[NoBreak]\\!\\(\\*StyleBox[\\!\\(15000\\), \\\"MT\\\"]\\)\
+\[NoBreak]\\!\\(\\*StyleBox[\\\"\\\\\\\" function evaluations on \
+\\\\\\\"\\\", \\\"MT\\\"]\\)\[NoBreak]\\!\\(\\*StyleBox[\\!\\(15\\), \\\"MT\\\
+\"]\\)\[NoBreak]\\!\\(\\*StyleBox[\\\"\\\\\\\" subregions.\\\\\\\"\\\", \
+\\\"MT\\\"]\\)\"\>"}]], "Message", "MSG",
+ CellChangeTimes->{3.571092689343852*^9, 3.5711282679992313`*^9}],
+
+Cell[BoxData[
+ RowBox[{
+  RowBox[{"Suave", "::", "\<\"success\"\>"}], 
+  RowBox[{
+  ":", " "}], "\<\"\\!\\(\\*StyleBox[\\\"\\\\\\\"Needed \\\\\\\"\\\", \
+\\\"MT\\\"]\\)\[NoBreak]\\!\\(\\*StyleBox[\\!\\(21000\\), \\\"MT\\\"]\\)\
+\[NoBreak]\\!\\(\\*StyleBox[\\\"\\\\\\\" function evaluations on \
+\\\\\\\"\\\", \\\"MT\\\"]\\)\[NoBreak]\\!\\(\\*StyleBox[\\!\\(21\\), \\\"MT\\\
+\"]\\)\[NoBreak]\\!\\(\\*StyleBox[\\\"\\\\\\\" subregions.\\\\\\\"\\\", \
+\\\"MT\\\"]\\)\"\>"}]], "Message", "MSG",
+ CellChangeTimes->{3.571092689343852*^9, 3.571128269854909*^9}],
+
+Cell[BoxData[
+ RowBox[{
+  RowBox[{"General", "::", "\<\"stop\"\>"}], 
+  RowBox[{
+  ":", " "}], "\<\"\\!\\(\\*StyleBox[\\\"\\\\\\\"Further output of \\\\\\\"\\\
+\", \\\"MT\\\"]\\)\[NoBreak]\\!\\(\\*StyleBox[\\!\\(Suave :: \
+\\\"success\\\"\\), \\\"MT\\\"]\\)\[NoBreak]\\!\\(\\*StyleBox[\\\"\\\\\\\" \
+will be suppressed during this calculation.\\\\\\\"\\\", \\\"MT\\\"]\\) \
+\\!\\(\\*ButtonBox[\\\"\[RightSkeleton]\\\", ButtonStyle->\\\"Link\\\", \
+ButtonFrame->None, ButtonData:>\\\"paclet:ref/message/General/stop\\\", \
+ButtonNote -> \\\"General::stop\\\"]\\)\"\>"}]], "Message", "MSG",
+ CellChangeTimes->{3.571092689343852*^9, 3.5711282698568163`*^9}],
+
+Cell[BoxData[
+ RowBox[{
+  RowBox[{"Suave", "::", "\<\"success\"\>"}], 
+  RowBox[{
+  ":", " "}], "\<\"\\!\\(\\*StyleBox[\\\"\\\\\\\"Needed \\\\\\\"\\\", \
+\\\"MT\\\"]\\)\[NoBreak]\\!\\(\\*StyleBox[\\!\\(50000\\), \\\"MT\\\"]\\)\
+\[NoBreak]\\!\\(\\*StyleBox[\\\"\\\\\\\" function evaluations on \
+\\\\\\\"\\\", \\\"MT\\\"]\\)\[NoBreak]\\!\\(\\*StyleBox[\\!\\(50\\), \\\"MT\\\
+\"]\\)\[NoBreak]\\!\\(\\*StyleBox[\\\"\\\\\\\" subregions.\\\\\\\"\\\", \
+\\\"MT\\\"]\\)\"\>"}]], "Message", "MSG",
+ CellChangeTimes->{3.571092689343852*^9, 3.571129883132951*^9}],
+
+Cell[BoxData[
+ RowBox[{
+  RowBox[{"Suave", "::", "\<\"success\"\>"}], 
+  RowBox[{
+  ":", " "}], "\<\"\\!\\(\\*StyleBox[\\\"\\\\\\\"Needed \\\\\\\"\\\", \
+\\\"MT\\\"]\\)\[NoBreak]\\!\\(\\*StyleBox[\\!\\(50000\\), \\\"MT\\\"]\\)\
+\[NoBreak]\\!\\(\\*StyleBox[\\\"\\\\\\\" function evaluations on \
+\\\\\\\"\\\", \\\"MT\\\"]\\)\[NoBreak]\\!\\(\\*StyleBox[\\!\\(50\\), \\\"MT\\\
+\"]\\)\[NoBreak]\\!\\(\\*StyleBox[\\\"\\\\\\\" subregions.\\\\\\\"\\\", \
+\\\"MT\\\"]\\)\"\>"}]], "Message", "MSG",
+ CellChangeTimes->{3.571092689343852*^9, 3.57112988991695*^9}],
+
+Cell[BoxData[
+ RowBox[{
+  RowBox[{"Suave", "::", "\<\"success\"\>"}], 
+  RowBox[{
+  ":", " "}], "\<\"\\!\\(\\*StyleBox[\\\"\\\\\\\"Needed \\\\\\\"\\\", \
+\\\"MT\\\"]\\)\[NoBreak]\\!\\(\\*StyleBox[\\!\\(50000\\), \\\"MT\\\"]\\)\
+\[NoBreak]\\!\\(\\*StyleBox[\\\"\\\\\\\" function evaluations on \
+\\\\\\\"\\\", \\\"MT\\\"]\\)\[NoBreak]\\!\\(\\*StyleBox[\\!\\(50\\), \\\"MT\\\
+\"]\\)\[NoBreak]\\!\\(\\*StyleBox[\\\"\\\\\\\" subregions.\\\\\\\"\\\", \
+\\\"MT\\\"]\\)\"\>"}]], "Message", "MSG",
+ CellChangeTimes->{3.571092689343852*^9, 3.5711298967281923`*^9}],
+
+Cell[BoxData[
+ RowBox[{
+  RowBox[{"General", "::", "\<\"stop\"\>"}], 
+  RowBox[{
+  ":", " "}], "\<\"\\!\\(\\*StyleBox[\\\"\\\\\\\"Further output of \\\\\\\"\\\
+\", \\\"MT\\\"]\\)\[NoBreak]\\!\\(\\*StyleBox[\\!\\(Suave :: \
+\\\"success\\\"\\), \\\"MT\\\"]\\)\[NoBreak]\\!\\(\\*StyleBox[\\\"\\\\\\\" \
+will be suppressed during this calculation.\\\\\\\"\\\", \\\"MT\\\"]\\) \
+\\!\\(\\*ButtonBox[\\\"\[RightSkeleton]\\\", ButtonStyle->\\\"Link\\\", \
+ButtonFrame->None, ButtonData:>\\\"paclet:ref/message/General/stop\\\", \
+ButtonNote -> \\\"General::stop\\\"]\\)\"\>"}]], "Message", "MSG",
+ CellChangeTimes->{3.571092689343852*^9, 3.571129896730166*^9}],
+
+Cell[BoxData[
+ RowBox[{
+  RowBox[{"Suave", "::", "\<\"success\"\>"}], 
+  RowBox[{
+  ":", " "}], "\<\"\\!\\(\\*StyleBox[\\\"\\\\\\\"Needed \\\\\\\"\\\", \
+\\\"MT\\\"]\\)\[NoBreak]\\!\\(\\*StyleBox[\\!\\(50000\\), \\\"MT\\\"]\\)\
+\[NoBreak]\\!\\(\\*StyleBox[\\\"\\\\\\\" function evaluations on \
+\\\\\\\"\\\", \\\"MT\\\"]\\)\[NoBreak]\\!\\(\\*StyleBox[\\!\\(50\\), \\\"MT\\\
+\"]\\)\[NoBreak]\\!\\(\\*StyleBox[\\\"\\\\\\\" subregions.\\\\\\\"\\\", \
+\\\"MT\\\"]\\)\"\>"}]], "Message", "MSG",
+ CellChangeTimes->{3.571092689343852*^9, 3.571133048994402*^9}],
+
+Cell[BoxData[
+ RowBox[{
+  RowBox[{"Suave", "::", "\<\"success\"\>"}], 
+  RowBox[{
+  ":", " "}], "\<\"\\!\\(\\*StyleBox[\\\"\\\\\\\"Needed \\\\\\\"\\\", \
+\\\"MT\\\"]\\)\[NoBreak]\\!\\(\\*StyleBox[\\!\\(50000\\), \\\"MT\\\"]\\)\
+\[NoBreak]\\!\\(\\*StyleBox[\\\"\\\\\\\" function evaluations on \
+\\\\\\\"\\\", \\\"MT\\\"]\\)\[NoBreak]\\!\\(\\*StyleBox[\\!\\(50\\), \\\"MT\\\
+\"]\\)\[NoBreak]\\!\\(\\*StyleBox[\\\"\\\\\\\" subregions.\\\\\\\"\\\", \
+\\\"MT\\\"]\\)\"\>"}]], "Message", "MSG",
+ CellChangeTimes->{3.571092689343852*^9, 3.571133060388575*^9}],
+
+Cell[BoxData[
+ RowBox[{
+  RowBox[{"Suave", "::", "\<\"success\"\>"}], 
+  RowBox[{
+  ":", " "}], "\<\"\\!\\(\\*StyleBox[\\\"\\\\\\\"Needed \\\\\\\"\\\", \
+\\\"MT\\\"]\\)\[NoBreak]\\!\\(\\*StyleBox[\\!\\(50000\\), \\\"MT\\\"]\\)\
+\[NoBreak]\\!\\(\\*StyleBox[\\\"\\\\\\\" function evaluations on \
+\\\\\\\"\\\", \\\"MT\\\"]\\)\[NoBreak]\\!\\(\\*StyleBox[\\!\\(50\\), \\\"MT\\\
+\"]\\)\[NoBreak]\\!\\(\\*StyleBox[\\\"\\\\\\\" subregions.\\\\\\\"\\\", \
+\\\"MT\\\"]\\)\"\>"}]], "Message", "MSG",
+ CellChangeTimes->{3.571092689343852*^9, 3.571133071765826*^9}],
+
+Cell[BoxData[
+ RowBox[{
+  RowBox[{"General", "::", "\<\"stop\"\>"}], 
+  RowBox[{
+  ":", " "}], "\<\"\\!\\(\\*StyleBox[\\\"\\\\\\\"Further output of \\\\\\\"\\\
+\", \\\"MT\\\"]\\)\[NoBreak]\\!\\(\\*StyleBox[\\!\\(Suave :: \
+\\\"success\\\"\\), \\\"MT\\\"]\\)\[NoBreak]\\!\\(\\*StyleBox[\\\"\\\\\\\" \
+will be suppressed during this calculation.\\\\\\\"\\\", \\\"MT\\\"]\\) \
+\\!\\(\\*ButtonBox[\\\"\[RightSkeleton]\\\", ButtonStyle->\\\"Link\\\", \
+ButtonFrame->None, ButtonData:>\\\"paclet:ref/message/General/stop\\\", \
+ButtonNote -> \\\"General::stop\\\"]\\)\"\>"}]], "Message", "MSG",
+ CellChangeTimes->{3.571092689343852*^9, 3.57113307176795*^9}],
+
+Cell[BoxData[
+ RowBox[{
+  RowBox[{"Suave", "::", "\<\"success\"\>"}], 
+  RowBox[{
+  ":", " "}], "\<\"\\!\\(\\*StyleBox[\\\"\\\\\\\"Needed \\\\\\\"\\\", \
+\\\"MT\\\"]\\)\[NoBreak]\\!\\(\\*StyleBox[\\!\\(19000\\), \\\"MT\\\"]\\)\
+\[NoBreak]\\!\\(\\*StyleBox[\\\"\\\\\\\" function evaluations on \
+\\\\\\\"\\\", \\\"MT\\\"]\\)\[NoBreak]\\!\\(\\*StyleBox[\\!\\(19\\), \\\"MT\\\
+\"]\\)\[NoBreak]\\!\\(\\*StyleBox[\\\"\\\\\\\" subregions.\\\\\\\"\\\", \
+\\\"MT\\\"]\\)\"\>"}]], "Message", "MSG",
+ CellChangeTimes->{3.571092689343852*^9, 3.571138775343688*^9}],
+
+Cell[BoxData[
+ RowBox[{
+  RowBox[{"Suave", "::", "\<\"success\"\>"}], 
+  RowBox[{
+  ":", " "}], "\<\"\\!\\(\\*StyleBox[\\\"\\\\\\\"Needed \\\\\\\"\\\", \
+\\\"MT\\\"]\\)\[NoBreak]\\!\\(\\*StyleBox[\\!\\(16000\\), \\\"MT\\\"]\\)\
+\[NoBreak]\\!\\(\\*StyleBox[\\\"\\\\\\\" function evaluations on \
+\\\\\\\"\\\", \\\"MT\\\"]\\)\[NoBreak]\\!\\(\\*StyleBox[\\!\\(16\\), \\\"MT\\\
+\"]\\)\[NoBreak]\\!\\(\\*StyleBox[\\\"\\\\\\\" subregions.\\\\\\\"\\\", \
+\\\"MT\\\"]\\)\"\>"}]], "Message", "MSG",
+ CellChangeTimes->{3.571092689343852*^9, 3.571138778455694*^9}],
+
+Cell[BoxData[
+ RowBox[{
+  RowBox[{"Suave", "::", "\<\"success\"\>"}], 
+  RowBox[{
+  ":", " "}], "\<\"\\!\\(\\*StyleBox[\\\"\\\\\\\"Needed \\\\\\\"\\\", \
+\\\"MT\\\"]\\)\[NoBreak]\\!\\(\\*StyleBox[\\!\\(19000\\), \\\"MT\\\"]\\)\
+\[NoBreak]\\!\\(\\*StyleBox[\\\"\\\\\\\" function evaluations on \
+\\\\\\\"\\\", \\\"MT\\\"]\\)\[NoBreak]\\!\\(\\*StyleBox[\\!\\(19\\), \\\"MT\\\
+\"]\\)\[NoBreak]\\!\\(\\*StyleBox[\\\"\\\\\\\" subregions.\\\\\\\"\\\", \
+\\\"MT\\\"]\\)\"\>"}]], "Message", "MSG",
+ CellChangeTimes->{3.571092689343852*^9, 3.571138782173946*^9}],
+
+Cell[BoxData[
+ RowBox[{
+  RowBox[{"General", "::", "\<\"stop\"\>"}], 
+  RowBox[{
+  ":", " "}], "\<\"\\!\\(\\*StyleBox[\\\"\\\\\\\"Further output of \\\\\\\"\\\
+\", \\\"MT\\\"]\\)\[NoBreak]\\!\\(\\*StyleBox[\\!\\(Suave :: \
+\\\"success\\\"\\), \\\"MT\\\"]\\)\[NoBreak]\\!\\(\\*StyleBox[\\\"\\\\\\\" \
+will be suppressed during this calculation.\\\\\\\"\\\", \\\"MT\\\"]\\) \
+\\!\\(\\*ButtonBox[\\\"\[RightSkeleton]\\\", ButtonStyle->\\\"Link\\\", \
+ButtonFrame->None, ButtonData:>\\\"paclet:ref/message/General/stop\\\", \
+ButtonNote -> \\\"General::stop\\\"]\\)\"\>"}]], "Message", "MSG",
+ CellChangeTimes->{3.571092689343852*^9, 3.5711387821759*^9}],
+
+Cell[BoxData["$Aborted"], "Output",
+ CellChangeTimes->{3.57114121983185*^9}],
+
+Cell[BoxData[
+ RowBox[{
+  RowBox[{"Suave", "::", "\<\"success\"\>"}], 
+  RowBox[{
+  ":", " "}], "\<\"\\!\\(\\*StyleBox[\\\"\\\\\\\"Needed \\\\\\\"\\\", \
+\\\"MT\\\"]\\)\[NoBreak]\\!\\(\\*StyleBox[\\!\\(29000\\), \\\"MT\\\"]\\)\
+\[NoBreak]\\!\\(\\*StyleBox[\\\"\\\\\\\" function evaluations on \
+\\\\\\\"\\\", \\\"MT\\\"]\\)\[NoBreak]\\!\\(\\*StyleBox[\\!\\(29\\), \\\"MT\\\
+\"]\\)\[NoBreak]\\!\\(\\*StyleBox[\\\"\\\\\\\" subregions.\\\\\\\"\\\", \
+\\\"MT\\\"]\\)\"\>"}]], "Message", "MSG",
+ CellChangeTimes->{3.571092689343852*^9, 3.571141225359671*^9}],
+
+Cell[BoxData[
+ RowBox[{
+  RowBox[{"Suave", "::", "\<\"success\"\>"}], 
+  RowBox[{
+  ":", " "}], "\<\"\\!\\(\\*StyleBox[\\\"\\\\\\\"Needed \\\\\\\"\\\", \
+\\\"MT\\\"]\\)\[NoBreak]\\!\\(\\*StyleBox[\\!\\(17000\\), \\\"MT\\\"]\\)\
+\[NoBreak]\\!\\(\\*StyleBox[\\\"\\\\\\\" function evaluations on \
+\\\\\\\"\\\", \\\"MT\\\"]\\)\[NoBreak]\\!\\(\\*StyleBox[\\!\\(17\\), \\\"MT\\\
+\"]\\)\[NoBreak]\\!\\(\\*StyleBox[\\\"\\\\\\\" subregions.\\\\\\\"\\\", \
+\\\"MT\\\"]\\)\"\>"}]], "Message", "MSG",
+ CellChangeTimes->{3.571092689343852*^9, 3.571141228720417*^9}],
+
+Cell[BoxData[
+ RowBox[{
+  RowBox[{"Suave", "::", "\<\"success\"\>"}], 
+  RowBox[{
+  ":", " "}], "\<\"\\!\\(\\*StyleBox[\\\"\\\\\\\"Needed \\\\\\\"\\\", \
+\\\"MT\\\"]\\)\[NoBreak]\\!\\(\\*StyleBox[\\!\\(19000\\), \\\"MT\\\"]\\)\
+\[NoBreak]\\!\\(\\*StyleBox[\\\"\\\\\\\" function evaluations on \
+\\\\\\\"\\\", \\\"MT\\\"]\\)\[NoBreak]\\!\\(\\*StyleBox[\\!\\(19\\), \\\"MT\\\
+\"]\\)\[NoBreak]\\!\\(\\*StyleBox[\\\"\\\\\\\" subregions.\\\\\\\"\\\", \
+\\\"MT\\\"]\\)\"\>"}]], "Message", "MSG",
+ CellChangeTimes->{3.571092689343852*^9, 3.5711412325002203`*^9}],
+
+Cell[BoxData[
+ RowBox[{
+  RowBox[{"General", "::", "\<\"stop\"\>"}], 
+  RowBox[{
+  ":", " "}], "\<\"\\!\\(\\*StyleBox[\\\"\\\\\\\"Further output of \\\\\\\"\\\
+\", \\\"MT\\\"]\\)\[NoBreak]\\!\\(\\*StyleBox[\\!\\(Suave :: \
+\\\"success\\\"\\), \\\"MT\\\"]\\)\[NoBreak]\\!\\(\\*StyleBox[\\\"\\\\\\\" \
+will be suppressed during this calculation.\\\\\\\"\\\", \\\"MT\\\"]\\) \
+\\!\\(\\*ButtonBox[\\\"\[RightSkeleton]\\\", ButtonStyle->\\\"Link\\\", \
+ButtonFrame->None, ButtonData:>\\\"paclet:ref/message/General/stop\\\", \
+ButtonNote -> \\\"General::stop\\\"]\\)\"\>"}]], "Message", "MSG",
+ CellChangeTimes->{3.571092689343852*^9, 3.571141232543911*^9}],
+
+Cell[BoxData["$Aborted"], "Output",
+ CellChangeTimes->{3.57114136301795*^9}]
+}, Open  ]],
+
+Cell[BoxData[{
+ RowBox[{
+  RowBox[{"Export", "[", 
+   RowBox[{"\"\<~/jennaproject/data/kvals.txt\>\"", ",", "kvals"}], "]"}], 
+  ";"}], "\[IndentingNewLine]", 
+ RowBox[{
+  RowBox[{"Export", "[", 
+   RowBox[{"\"\<~/jennaproject/data/term1.txt\>\"", ",", "t1"}], "]"}], 
+  ";"}], "\[IndentingNewLine]", 
+ RowBox[{
+  RowBox[{"Export", "[", 
+   RowBox[{"\"\<~/jennaproject/data/term2.txt\>\"", ",", "t2"}], "]"}], 
+  ";"}], "\[IndentingNewLine]", 
+ RowBox[{
+  RowBox[{"Export", "[", 
+   RowBox[{"\"\<~/jennaproject/data/term3.txt\>\"", ",", "t3"}], "]"}], 
+  ";"}], "\[IndentingNewLine]", 
+ RowBox[{
+  RowBox[{"Export", "[", 
+   RowBox[{"\"\<~/jennaproject/data/term4.txt\>\"", ",", "t4"}], "]"}], 
+  ";"}], "\[IndentingNewLine]", 
+ RowBox[{
+  RowBox[{"Export", "[", 
+   RowBox[{"\"\<~/jennaproject/data/term2.txt\>\"", ",", "t5"}], "]"}], 
+  ";"}]}], "Input",
+ CellChangeTimes->{{3.571141248335411*^9, 3.571141306927652*^9}, {
+  3.571141405818658*^9, 3.5711414202759323`*^9}, {3.5711415095302896`*^9, 
+  3.571141546860538*^9}}],
+
+Cell[CellGroupData[{
+
+Cell[BoxData[
+ RowBox[{"Dimensions", "[", "t5", "]"}]], "Input",
+ CellChangeTimes->{{3.571141425717094*^9, 3.571141499183679*^9}}],
+
+Cell[BoxData[
+ RowBox[{"{", "1000", "}"}]], "Output",
+ CellChangeTimes->{{3.571141426589141*^9, 3.571141499728812*^9}}]
+}, Open  ]]
+},
+WindowSize->{1181, 696},
+WindowMargins->{{43, Automatic}, {Automatic, 0}},
+FrontEndVersion->"7.0 for Mac OS X x86 (32-bit) (February 18, 2009)",
+StyleDefinitions->"Default.nb"
+]
+(* End of Notebook Content *)
+
+(* Internal cache information *)
+(*CellTagsOutline
+CellTagsIndex->{}
+*)
+(*CellTagsIndex
+CellTagsIndex->{}
+*)
+(*NotebookFileOutline
+Notebook[{
+Cell[CellGroupData[{
+Cell[567, 22, 104, 2, 27, "Input"],
+Cell[674, 26, 106, 1, 27, "Output"]
+}, Open  ]],
+Cell[CellGroupData[{
+Cell[817, 32, 75, 1, 27, "Input"],
+Cell[895, 35, 614, 11, 23, "Message"]
+}, Open  ]],
+Cell[1524, 49, 356, 10, 43, "Input"],
+Cell[1883, 61, 228, 6, 43, "Input"],
+Cell[2114, 69, 602, 18, 43, "Input"],
+Cell[CellGroupData[{
+Cell[2741, 91, 215, 5, 27, "Input"],
+Cell[2959, 98, 119, 2, 27, "Output"]
+}, Open  ]],
+Cell[CellGroupData[{
+Cell[3115, 105, 2591, 87, 88, "Input"],
+Cell[5709, 194, 552, 10, 23, "Message"],
+Cell[6264, 206, 555, 10, 23, "Message"],
+Cell[6822, 218, 553, 10, 23, "Message"],
+Cell[7378, 230, 654, 11, 23, "Message"],
+Cell[8035, 243, 553, 10, 23, "Message"],
+Cell[8591, 255, 552, 10, 23, "Message"],
+Cell[9146, 267, 555, 10, 23, "Message"],
+Cell[9704, 279, 652, 11, 23, "Message"],
+Cell[10359, 292, 553, 10, 23, "Message"],
+Cell[10915, 304, 553, 10, 23, "Message"],
+Cell[11471, 316, 553, 10, 23, "Message"],
+Cell[12027, 328, 651, 11, 23, "Message"],
+Cell[12681, 341, 553, 10, 23, "Message"],
+Cell[13237, 353, 553, 10, 23, "Message"],
+Cell[13793, 365, 553, 10, 23, "Message"],
+Cell[14349, 377, 650, 11, 23, "Message"],
+Cell[15002, 390, 76, 1, 27, "Output"],
+Cell[15081, 393, 553, 10, 23, "Message"],
+Cell[15637, 405, 553, 10, 23, "Message"],
+Cell[16193, 417, 555, 10, 23, "Message"],
+Cell[16751, 429, 652, 11, 23, "Message"],
+Cell[17406, 442, 76, 1, 27, "Output"]
+}, Open  ]],
+Cell[17497, 446, 1024, 27, 103, "Input"],
+Cell[CellGroupData[{
+Cell[18546, 477, 130, 2, 27, "Input"],
+Cell[18679, 481, 119, 2, 27, "Output"]
+}, Open  ]]
+}
+]
+*)
+
+(* End of internal cache information *)
