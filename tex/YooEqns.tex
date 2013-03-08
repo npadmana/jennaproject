@@ -1,0 +1,32 @@
+\title{Yoo Eqns}
+\author{
+        Jenna Freudenburg \\
+                Physics 472\\
+}
+\date{\today}
+
+\documentclass[12pt]{article}
+\usepackage{graphicx}
+\begin{document}
+\maketitle
+
+The following equations are taken from Yoo et al.
+
+$$\int\frac{d^{3}\bf q}{(2\pi)^{3}}P_{m}(q)P_{m}(|{\bf k - q}|) F_{2}({\bf q, k- q})$$
+
+$$= \frac{k^{3}}{(2\pi)^{2}}\int_{0}^{\infty}dr\: r^{2}\: P_{m}(kr)\int_{-1}^{1}d\mu\: P_{m}\;(k\sqrt{1+r^{2}-2r\mu})\:\frac{3r+7\mu-10r\mu^{2}}{14r(1+r^{2}-2r\mu)}$$
+
+$$\int\frac{d^{3}\bf q}{(2\pi)^{3}}P_{m}(q)P_{m}(|{\bf k - q}|) G_{u}({\bf q, k- q})$$
+
+$$= \frac{k^{3}}{(2\pi)^{2}}\int_{0}^{\infty}dr\: r^{2}\: P_{m}(kr)\int_{-1}^{1}d\mu\: P_{m}\;(k\sqrt{1+r^{2}-2r\mu})\;\frac{T_{ru}(q)}{T_{m}(q)}\:\frac{T_{ru}(k\sqrt{1+r^{2}-2r\mu})}{T_{m}(k\sqrt{1+r^{2}-2r\mu}))}\frac{r-\mu}{\sqrt{1+r^{2}-2r\mu})}$$
+
+
+$$P_{g}(k) = b_{1}^{2}P_{nl}({\bf k}) + \int\frac{d^{3}\bf q}{(2\pi)^{3}}P_{m}(q)P_{m}(|{\bf k - q}|)[\frac{1}{2}b_{2}^{2}+2b_{1}b_{2}F_{2}({\bf q, k- q})$$
+
+$$+4b_{1}b_{r}F_{2}({\bf q, k- q})G_{u}({\bf q, k- q})+2b_{2}b_{r}G_{u}({\bf q, k- q})+2b_{r}^{2}G_{u}({\bf q, k- q})^{2}]$$
+
+We make the coordinate transformation $r \to 1/r $, so we have $$\int_{0}^{\infty} f(r) dr = \int_{0}^{1} f(r) dr + \int_{1}^{\infty} f(r) dr = \int_{0}^{1} f(r) dr +\int_{0}^{1} r^{-2} f(1/r) dr$$
+
+This allows us to avoid an infinite limit of integration and to use the numerical integration software Cuba. A linear matter power spectrum, represented above as $P_{m}$, was obtained from data generated from a fiducial cosmology using CAMB (Code for Anisotropies in the Microwave Background) and is shown in Figure \ref{Pm}.
+
+\end{document}
