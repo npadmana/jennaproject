@@ -11,7 +11,7 @@
 \maketitle
 
 
-As a participant in Independent Projects in Physics, I have spent this semester working with Prof. Nikhil Padmanabhan on a project in astrophysics entitled \emph{Constraining the Supersonic Relative Velocity Effect on the Baryon Acoustic Oscillation Peak}. The goal of this project is to refine existing models for calculating the peak in the galaxy correlation function cause by baryon acoustic oscillations.
+As a participant in Independent Projects in Physics, I have spent this semester working with Prof. Nikhil Padmanabhan on a project in astrophysics entitled \emph{Constraining the Supersonic Relative Velocity Effect on the Baryon Acoustic Oscillation Peak}. The goal of this project is to refine existing models for calculating the peak in the galaxy correlation function caused by baryon acoustic oscillations.
 
 \section{Background}
 
@@ -30,7 +30,6 @@ $$\delta_{g}=b_{1}\delta_{m}({\bf x})+b_{r}[u_{r}^{2}({\bf x})-\sigma_{ru}^{2}]$
 where $u_{r} ={\bf v}_{r}/\sigma_{rv}$ and $\sigma_{rv}$ is the one-dimensional rms relative velocity fluctuation. Using perturbation theory, the equation for the full power spectrum is calculated to be 
 
 $$P_{g}(k) = b_{1}^{2}P_{nl}({\bf k}) + \int\frac{d^{3}\bf q}{(2\pi)^{3}}P_{m}(q)P_{m}(|{\bf k - q}|)[\frac{1}{2}b_{2}^{2}+2b_{1}b_{2}F_{2}({\bf q, k- q})$$
-
 $$+4b_{1}b_{r}F_{2}({\bf q, k- q})G_{u}({\bf q, k- q})+2b_{2}b_{r}G_{u}({\bf q, k- q})+2b_{r}^{2}G_{u}({\bf q, k- q})^{2}]$$
 
 where $F_{2}$ and $G_{u}$ are the density field and velocity divergence field kernels, respectively \cite{Yooetal} \cite{Bernardeau}.
@@ -44,7 +43,14 @@ From merely confirming the results of Yoo et al., I have now begun to analyze th
 	\label{Pm}
 \end{figure}
 
-We compare this linear power spectrum to Equation \ref{}, which includes second order terms from both the matter density and the relative velocity fluctuations. Figure \ref{} breaks down Equation \ref{} term by term, and shows the clear deviation that these higher-order terms cause in the galaxy power spectrum. 
+\begin{figure}[h]
+	\centering
+	\includegraphics[width=15cm]{PSbd}
+	\caption{The full galaxy power spectrum (blue = auto-relative velocity term, orange = cross power terms, red = matter terms).}
+	\label{PSbd}
+\end{figure}
+
+We compare this linear power spectrum to the full power spectrum, given above, which includes second order terms from both the matter density and the relative velocity fluctuations. Figure \ref{PSbd} breaks down the full power spectrum term by term, and shows the clear deviation that these higher-order terms cause in the galaxy power spectrum. 
 
 \section{Future Work}
 

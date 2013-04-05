@@ -1,0 +1,52 @@
+(* Content-type: application/mathematica *)
+
+(*** Wolfram Notebook File ***)
+(* http://www.wolfram.com/nb *)
+
+(* CreatedBy='Mathematica 7.0' *)
+
+(*CacheID: 234*)
+(* Internal cache information:
+NotebookFileLineBreakTest
+NotebookFileLineBreakTest
+NotebookDataPosition[       145,          7]
+NotebookDataLength[      1102,         42]
+NotebookOptionsPosition[       854,         29]
+NotebookOutlinePosition[      1194,         44]
+CellTagsIndexPosition[      1151,         41]
+WindowFrame->Normal*)
+
+(* Beginning of Notebook Content *)
+Notebook[{
+Cell[BoxData[
+ RowBox[{
+  RowBox[{
+   RowBox[{"Import", "[", 
+    RowBox[{"\"\<alpha_b2_0.0_br_0.000.txt\>\"", ",", "\"\<Table\>\""}], 
+    "]"}], ";"}], "\[IndentingNewLine]"}]], "Input",
+ CellChangeTimes->{{3.5735763532483683`*^9, 3.573576354623715*^9}, {
+  3.573576654077447*^9, 3.573576693405097*^9}}]
+},
+WindowSize->{640, 652},
+WindowMargins->{{Automatic, 161}, {Automatic, 0}},
+FrontEndVersion->"7.0 for Mac OS X x86 (32-bit) (February 18, 2009)",
+StyleDefinitions->"Default.nb"
+]
+(* End of Notebook Content *)
+
+(* Internal cache information *)
+(*CellTagsOutline
+CellTagsIndex->{}
+*)
+(*CellTagsIndex
+CellTagsIndex->{}
+*)
+(*NotebookFileOutline
+Notebook[{
+Cell[545, 20, 305, 7, 43, "Input"]
+}
+]
+*)
+
+(* End of internal cache information *)
+
