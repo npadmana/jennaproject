@@ -1,10 +1,9 @@
 \contentsline {section}{\numberline {1}Background}{2}
-\contentsline {subsection}{\numberline {1.1}The primordial universe and the baryon acoustic oscillations}{2}
-\contentsline {subsection}{\numberline {1.2}The supersonic relative velocity effect}{2}
-\contentsline {section}{\numberline {2}Calculations}{3}
-\contentsline {subsection}{\numberline {2.1}Summary of progress **}{3}
-\contentsline {subsection}{\numberline {2.2}Power spectrum}{4}
-\contentsline {subsection}{\numberline {2.3}Bispectrum}{5}
-\contentsline {section}{\numberline {3}Discussion and conclusions}{5}
-\contentsline {subsection}{\numberline {3.1}Future work**}{6}
-\contentsline {section}{\numberline {A}Simulation details}{6}
+\contentsline {subsection}{\numberline {1.1}The primordial universe and the BAO}{2}
+\contentsline {subsection}{\numberline {1.2}The supersonic relative velocity effect}{5}
+\contentsline {subsection}{\numberline {1.3}Statistics}{5}
+\contentsline {section}{\numberline {2}Calculations and results}{6}
+\contentsline {subsection}{\numberline {2.1}Power spectrum}{6}
+\contentsline {subsection}{\numberline {2.2}BAO peak shift}{7}
+\contentsline {subsection}{\numberline {2.3}Bispectrum}{9}
+\contentsline {subsection}{\numberline {2.4}Future work}{10}
